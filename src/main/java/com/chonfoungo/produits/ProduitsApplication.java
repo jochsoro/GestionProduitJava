@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
+import com.chonfoungo.produits.entities.Categorie;
 import com.chonfoungo.produits.entities.Produit;
 
 @SpringBootApplication
@@ -22,7 +23,8 @@ public class ProduitsApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-	repositoryRestConfiguration.exposeIdsFor(Produit.class);
+		// Pour exposer les id sinon il ne le seront pas
+	repositoryRestConfiguration.exposeIdsFor(Produit.class, Categorie.class);
 	}
 	
 	@Bean
